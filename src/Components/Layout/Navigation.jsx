@@ -1,0 +1,109 @@
+import { useState, useEffect } from 'react';
+import MobileNavigation from './MobileNavigation';
+import blueLogo from '../../assets/SAMA-blue-text.png';
+import whiteLogo from '../../assets/SAMA-white-text.png';
+
+const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (href) => {
+    const element = document.querySelector(href);
+    if(element) {
+      element.scrollIntoView({ behavior: 'smooth'});
+      setIsOpen(false);
+    }
+    else {
+      setIsOpen(false);
+    }
+  } 
+
+   useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [isOpen]);
+
+  const navItems = [
+    { name: 'Home', href: '#hero'},
+    { name: 'About', href: '#about'},
+    { name: 'Services', href: '#services'},
+    { name: 'Case Study', href: '#case-study'},
+    { name: 'Contact', href: '#contact'},
+  ]
+
+  return (
+    <header className={`fixed top-0 left-0 w-full z-50 py-2 shadow-md shadow-gray-400 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md text-blue-600' : 'bg-transparent text-blue-800'
+    }`}>
+      <div className="px-4 max-w-7xl mx-auto z-50">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div className="text-2xl font-bold font-serif text-inherit">
+            <button className="cursor-pointer hover:scale-105 translation duration-300 ease-in-out" onClick={() => scrollToSection('#hero')}>
+              <img 
+                src={isScrolled ? blueLogo : whiteLogo} 
+                alt="SAMA Equity" 
+                className="max-w-28 transition duration-100 ease-in-out"
+              />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="space-x-6 hidden md:flex">
+            {navItems.map((item) => (
+              <button
+                key={item.name} 
+                onClick={() => scrollToSection(item.href)}
+                className="text-gray-700 hover:text-sky-500 hover:scale-120 hover:font-semibold cursor-pointer translation duration-300 ease-in-out"
+              >
+                {item.name}
+              </button>
+            ))}
+          </nav>
+
+          <div>
+            <button 
+              onClick={() => scrollToSection('#contact')}
+              className="p-2 bg-gradient-to-r from-indigo-500 from-10% to-sky-500 to-90% text-white hover:scale-105 transition duration-100 ease-in-out rounded-md transition font-bold hidden md:flex cursor-pointer"
+            >
+              Get Started
+            </button>
+          </div>
+          {/* Mobile Hamburger Menu */}
+          <div className="flex md:hidden">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex justify-center items-center rounded-md p-2 hover:cursor-pointer hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                  <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </button>
+          </div>
+        </div>
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <MobileNavigation 
+            navItems={navItems}
+            scrollToSection={scrollToSection}          
+          />
+        )}
+        
+      </div>
+    </header>
+  );
+};
+
+export default Navigation;
