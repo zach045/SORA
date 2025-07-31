@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import MobileNavigation from './MobileNavigation';
 import blueLogo from '../../assets/SAMA-blue-text.png';
 import whiteLogo from '../../assets/SAMA-white-text.png';
+import { CgMenuRight } from "react-icons/cg";
+import { VscChromeClose } from "react-icons/vsc";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +47,7 @@ const Navigation = () => {
   ]
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 py-2 shadow-md shadow-gray-400 ${
+    <header className={`fixed top-0 left-0 w-full z-50 py-2 transition duration-400 ease-in-out ${
       isScrolled ? 'bg-white/95 backdrop-blur-md text-blue-600' : 'bg-transparent text-blue-800'
     }`}>
       <div className="px-4 max-w-7xl mx-auto z-50">
@@ -87,9 +89,7 @@ const Navigation = () => {
             <button 
               onClick={() => setIsOpen(!isOpen)}
               className="flex justify-center items-center rounded-md p-2 hover:cursor-pointer hover:bg-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                  <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-                </svg>
+                {isOpen ? <VscChromeClose className="size-6 text-sky-900 rounded-md scale-105" />  : <CgMenuRight className="size-6 text-sky-900" />}
             </button>
           </div>
         </div>
