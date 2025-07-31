@@ -69,7 +69,7 @@ const Navigation = () => {
               <button
                 key={item.name} 
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 hover:text-sky-500 hover:scale-120 hover:font-semibold cursor-pointer translation duration-300 ease-in-out"
+                className="text-gray-700 border-b border-transparent hover:border-black cursor-pointer translation duration-300 ease-in-out"
               >
                 {item.name}
               </button>
