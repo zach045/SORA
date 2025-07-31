@@ -8,7 +8,7 @@ const stats = [
 
 const About = () => {
     return (
-        <section id="about" className="py-20 overflow-x-hidden z-10 bg-gray-100">
+        <section id="about" className="py-20 overflow-x-hidden z-10 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="mb-8">
                     <h1 className="font-serif text-4xl lg:text-5xl font-semibold text-foreground z-0 text-black">About Sama Equity</h1>
