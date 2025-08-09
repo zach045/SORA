@@ -4,6 +4,7 @@ import blueLogo from '../../assets/SAMA-blue-text.png';
 import whiteLogo from '../../assets/SAMA-white-text.png';
 import { CgMenuRight } from "react-icons/cg";
 import { VscChromeClose } from "react-icons/vsc";
+import BaseButton from '../ui/Buttons/BaseButton';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,8 +48,8 @@ const Navigation = () => {
   ]
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 py-2 transition duration-400 ease-in-out shadow-md shadow-gray-400 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md text-blue-600' : 'bg-transparent text-blue-800'
+    <header className={`fixed top-0 left-0 w-full z-50 py-2 transition duration-500 ease-in-out ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md' : 'bg-transparent shadow-md shadow-gray-400'
     }`}>
       <div className="px-4 max-w-7xl mx-auto z-50">
         <div className="flex justify-between items-center">
@@ -69,7 +70,8 @@ const Navigation = () => {
               <button
                 key={item.name} 
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 border-b border-transparent hover:border-black cursor-pointer translation duration-300 ease-in-out"
+                className={`border-b border-transparent hover:border-black cursor-pointer translation duration-300 ease-in-out ${
+                isScrolled ? 'text-gray-700' : 'text-white'}`}
               >
                 {item.name}
               </button>
@@ -77,12 +79,9 @@ const Navigation = () => {
           </nav>
 
           <div>
-            <button 
-              onClick={() => scrollToSection('#contact')}
-              className="p-2 bg-gradient-to-r from-indigo-500 from-10% to-sky-500 to-90% text-white hover:scale-105 transition duration-100 ease-in-out rounded-md transition font-bold hidden md:flex cursor-pointer"
-            >
-              Get Started
-            </button>
+            <BaseButton className="hidden md:flex py-2"  func={() => scrollToSection('#contact')}>
+              <span>Get Started</span>
+            </BaseButton>
           </div>
           {/* Mobile Hamburger Menu */}
           <div className="flex md:hidden">
@@ -90,6 +89,7 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="flex justify-center items-center rounded-md p-2 hover:cursor-pointer hover:bg-gray-100">
                 {isOpen ? <VscChromeClose className="size-6 text-sky-900 rounded-md scale-105" />  : <CgMenuRight className="size-6 text-sky-900" />}
+                <span className="hidden">Menu</span>
             </button>
           </div>
         </div>

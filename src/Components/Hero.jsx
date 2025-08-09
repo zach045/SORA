@@ -1,17 +1,11 @@
 import sky from '../assets/sky.jpeg';
 import { FaArrowRight } from "react-icons/fa";
+import { scrollToSection } from '../utils/scrollToSection';
+import BaseButton from './ui/Buttons/BaseButton';
+import SecondaryButton from './ui/Buttons/SecondaryButton';
 
 const Hero = () => {
-    const scrollToSection = (href) => {
-        const element = document.querySelector(href);
-        if(element) {
-        element.scrollIntoView({ behavior: 'smooth'});
-        setIsOpen(false);
-        }
-        else {
-        setIsOpen(false);
-        }
-    } 
+     
     return (
         <section  
             className="hero h-screen bg-cover bg-center my-auto relative overflow-x-hidden"
@@ -19,21 +13,21 @@ const Hero = () => {
             id="hero">
             <div className="h-full w-full max-w-7xl mx-auto flex justify-start items-center px-4">
                 <div className="flex flex-col flex-wrap justify-start text-left max-w-2xl mt-20">
-                    <h1 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-sky-400">
+                    <h1 className="font-serif text-4xl md:text-5xl font-bold mb-8 text-sky-500">
                         <span className="text-sky-800">Grounded</span> in Growth. Elevated by <span className="text-sky-800">Vision.</span>
                     </h1>
-                    <p className="leading-7 mb-8 text-blue-950 text-sm md:text-lg">
+                    <p className="leading-7 mb-8 text-sky-700 text-sm md:text-lg">
                         SAMA Equity empowers small businesses to scale beyond their limits through strategic consulting and meaningful partnerships. Like the endless sky, your potential knows no bounds. Start Your Journey
                     </p>
-                    <div className="flex justify-start items-center md:text-md text-sm">
-                        <button className="px-2 py-4 bg-gradient-to-r from-indigo-400 from-10% to-sky-600 to-90% text-white border-transparent border hover:border-sky-300 hover:text-blue-700 hover:from-white hover:to-white rounded-md transition font-bold flex justify-center items-center cursor-pointer">
-                            <span>Start Your Journey</span>
+                    <div className="flex justify-start items-center text-md text-sm">
+                        <BaseButton className="px-3 py-4 mr-4" func={() => scrollToSection('#about')}>
+                            <span>Learn More</span>
                             <FaArrowRight className="md:ml-2 ml-1 size-3" />
-                        </button>
-                        <button className="px-2 py-4 text-blue-500 border border-blue-500 hover:bg-blue-700 hover:text-white rounded-md transition font-bold flex justify-center items-center cursor-pointer ml-4">
-                            <span>Explore Our Services</span>
+                        </BaseButton>
+                        <SecondaryButton className="px-3 py-4 max-w-40 bg-white" func={() => scrollToSection('#services')}>
+                            <span>Explore Services</span>
                             <FaArrowRight className="md:ml-2 ml-1 size-3" />
-                        </button>
+                        </SecondaryButton>
                     </div>
                 </div>
             </div>
@@ -43,6 +37,7 @@ const Hero = () => {
             >
                 <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
                 <div className="w-1 h-3 bg-white/70 rounded-full mt-2"></div>
+                <span className="hidden">about</span>
                 </div>
             </button>
         </section>
