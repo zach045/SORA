@@ -71,7 +71,7 @@ const Navigation = () => {
                 key={item.name} 
                 onClick={() => scrollToSection(item.href)}
                 className={`border-b border-transparent hover:border-black cursor-pointer translation duration-300 ease-in-out ${
-                isScrolled ? 'text-gray-700' : 'text-white'}`}
+                isScrolled ? 'text-gray-700' : 'text-black'}`}
               >
                 {item.name}
               </button>
