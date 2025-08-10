@@ -60,7 +60,7 @@ const solutions = [
 ]
 const Services = () => {
     return (
-        <section id="services" className="py-20 overflow-x-hidden z-10 bg-linear-65 from-gray-300 to-sky-800">
+        <section id="services" className="py-20 bg-linear-65 from-gray-300 to-sky-800">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="mb-8">
                     <h2 className="font-serif text-4xl lg:text-5xl font-semibold text-foreground z-0 text-white">Our Services</h2>
@@ -90,13 +90,13 @@ const Services = () => {
                         </ul>
                         <SecondaryButton func={() => scrollToSection('#contact')}>
                             <span className="mr-2">Learn More</span>
-                            <FaArrowRight className="size-4" />
+                            <FaArrowRight className="size-4 text-sky-700" />
                         </SecondaryButton>
                     </div>
                     ))}
                 </div>
                 <div className="flex flex-col flex-wrap justify-center items-center">
-                    <p className="mb-4 leading-relaxed font-semibold font-serif lg:text-xl">Ready to transform your business? Let's discuss your specific needs.</p>
+                    <p className="mb-6 leading-relaxed font-semibold font-serif lg:text-xl">Ready to transform your business? Let's discuss your specific needs.</p>
                     <BaseButton className="py-3 px-4" func={() => scrollToSection('#contact')}>
                         <span className="mr-3">Book Your Consultation</span>
                         <FaArrowRight className="size-4" />
