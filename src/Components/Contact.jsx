@@ -148,8 +148,8 @@ const Contact = () => {
                                     <span className="text-red-500">Missing required fields.</span>
                                 </div>
                             )}
-                            <BaseButton className={`w-full mt-4 py-3 justify-center ${submitting ? 'opacity-70 pointer-events-none' : ''}`} func={handleSubmit}>
-                                <span>{submitting ? 'Sending...' : 'Send Message'}</span>
+                            <BaseButton className={`w-full mt-4 py-3 justify-center ${submitting ? 'opacity-70 pointer-events-none items-center' : ''}`} func={handleSubmit}>
+                                <span className="mr-1">{submitting ? 'Sending...' : 'Send Message'}</span>
                                 <IoIosSend />
                             </BaseButton>
                         </form>
