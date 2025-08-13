@@ -53,7 +53,7 @@ const Navigation = () => {
               onClick={() => scrollToSection('#hero')}
               className="cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
             >
-              <span className={`font-sans text-3xl ${isScrolled ? 'text-sky-800' : 'text-white'}`}>SORA</span>
+              <span className="font-sans text-3xl text-sky-800">SORA</span>
             </button>
           </div>
 
@@ -64,7 +64,7 @@ const Navigation = () => {
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
                 className={`border-b border-transparent hover:border-current cursor-pointer transition duration-300 ${
-                  isScrolled ? 'text-gray-700' : 'text-white'
+                  isScrolled ? 'text-gray-700' : 'text-gray-950'
                 }`}
               >
                 {item.name}
