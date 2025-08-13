@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import MobileNavigation from './MobileNavigation';
-import blueLogo from '../../assets/SAMA-blue-text.png';
-import whiteLogo from '../../assets/SAMA-white-text.png';
 import { CgMenuRight } from "react-icons/cg";
 import { VscChromeClose } from "react-icons/vsc";
 import BaseButton from '../ui/Buttons/BaseButton';
@@ -10,68 +8,64 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Set initial state on mount, then keep it updated on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const update = () => setIsScrolled(window.scrollY > 10);
+    update(); // 👈 handles refresh-at-offset and hash loads
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
   }, []);
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if(element) {
-      element.scrollIntoView({ behavior: 'smooth'});
-      setIsOpen(false);
-    }
-    else {
-      setIsOpen(false);
-    }
-  } 
-
-   useEffect(() => {
+  // Close mobile menu when resizing up
+  useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768 && isOpen) {
-        setIsOpen(false);
-      }
+      if (window.innerWidth >= 768 && isOpen) setIsOpen(false);
     };
-    window.addEventListener('resize', onResize);
+    window.addEventListener('resize', onResize, { passive: true });
     return () => window.removeEventListener('resize', onResize);
   }, [isOpen]);
 
+  const scrollToSection = (href) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
   const navItems = [
-    { name: 'Home', href: '#hero'},
-    { name: 'About', href: '#about'},
-    { name: 'Services', href: '#services'},
-    { name: 'Case Study', href: '#case-study'},
-    { name: 'Contact', href: '#contact'},
-  ]
+    { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Case Study', href: '#case-study' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 py-2 transition duration-500 ease-in-out ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md' : 'bg-transparent shadow-md shadow-gray-400'
-    }`}>
-      <div className="px-4 max-w-7xl mx-auto z-50">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 py-2 transition duration-300 ease-in-out ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent shadow-md shadow-gray-400'
+      }`}
+    >
+      <div className="px-4 max-w-7xl mx-auto">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="text-2xl font-bold font-serif text-inherit">
-            <button className="cursor-pointer hover:scale-105 translation duration-300 ease-in-out" onClick={() => scrollToSection('#hero')}>
-              <img 
-                src={isScrolled ? blueLogo : whiteLogo} 
-                alt="SAMA Equity" 
-                className="max-w-28 transition duration-100 ease-in-out"
-              />
+          <div className="text-2xl font-bold font-serif">
+            <button
+              onClick={() => scrollToSection('#hero')}
+              className="cursor-pointer hover:scale-105 transition duration-300 ease-in-out"
+            >
+              <span className={`font-sans text-3xl ${isScrolled ? 'text-sky-800' : 'text-white'}`}>SORA</span>
             </button>
           </div>
 
-          {/* Navigation Links */}
+          {/* Links */}
           <nav className="space-x-6 hidden md:flex">
             {navItems.map((item) => (
               <button
-                key={item.name} 
+                key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className={`border-b border-transparent hover:border-black cursor-pointer translation duration-300 ease-in-out ${
-                isScrolled ? 'text-gray-700' : 'text-black'}`}
+                className={`border-b border-transparent hover:border-current cursor-pointer transition duration-300 ${
+                  isScrolled ? 'text-gray-700' : 'text-white'
+                }`}
               >
                 {item.name}
               </button>
@@ -79,28 +73,37 @@ const Navigation = () => {
           </nav>
 
           <div>
-            <BaseButton className="hidden md:flex py-2"  func={() => scrollToSection('#contact')}>
+            <BaseButton
+              className="hidden md:flex py-2"
+              func={() => scrollToSection('#contact')}
+            >
               <span>Get Started</span>
             </BaseButton>
           </div>
-          {/* Mobile Hamburger Menu */}
+
+          {/* Mobile toggle */}
           <div className="flex md:hidden">
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex justify-center items-center rounded-md p-2 hover:cursor-pointer hover:bg-gray-100">
-                {isOpen ? <VscChromeClose className="size-6 text-sky-900 rounded-md scale-105" />  : <CgMenuRight className="size-6 text-sky-900" />}
-                <span className="hidden">Menu</span>
+              className="flex items-center rounded-md p-2 hover:bg-gray-100"
+            >
+              {isOpen ? (
+                <VscChromeClose className="size-6 text-sky-900" />
+              ) : (
+                <CgMenuRight className="size-6 text-sky-900" />
+              )}
+              <span className="sr-only">Menu</span>
             </button>
           </div>
         </div>
-        {/* Mobile Navigation */}
+
+        {/* Mobile menu */}
         {isOpen && (
-          <MobileNavigation 
+          <MobileNavigation
             navItems={navItems}
-            scrollToSection={scrollToSection}          
+            scrollToSection={scrollToSection}
           />
         )}
-        
       </div>
     </header>
   );

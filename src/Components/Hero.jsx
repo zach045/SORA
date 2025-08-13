@@ -17,7 +17,7 @@ const Hero = () => {
                         <span className="text-sky-800">Grounded</span> in Growth. Elevated by <span className="text-sky-800">Vision.</span>
                     </h1>
                     <p className="leading-7 mb-8 text-sky-700 text-sm md:text-lg">
-                        SAMA Equity empowers small businesses to scale beyond their limits through strategic consulting and meaningful partnerships. Like the endless sky, your potential knows no bounds. Start Your Journey
+                        SORA Equity empowers small businesses to scale beyond their limits through strategic consulting and meaningful partnerships. Like the endless sky, your potential knows no bounds. Start Your Journey
                     </p>
                     <div className="flex justify-start items-center text-md text-sm">
                         <BaseButton className="px-3 py-4 mr-4" func={() => scrollToSection('#about')}>

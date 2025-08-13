@@ -47,7 +47,7 @@ const CaseStudy = () => {
                         <p className="leading-relaxed my-4 text-left text-gray-500 text-lg">A B2B SaaS company providing workflow automation tools for mid-market businesses.</p>
                         <div className="shadow-lg shadow-gray-300 w-full p-8 rounded-lg flex flex-wrap flex-col justify-start items-start my-4">
                             <FaQuoteRight className="text-sky-700 size-6" />
-                            <p className="text-left leading-relaxed text-lg my-4">"SAMA Equity didn't just provide consulting - they became true partners in our journey. Their strategic guidance and partnership connections were instrumental in our explosive growth."</p>
+                            <p className="text-left leading-relaxed text-lg my-4">"Sora Equity didn't just provide consulting - they became true partners in our journey. Their strategic guidance and partnership connections were instrumental in our explosive growth."</p>
                             <span className="italic font-bold text-gray-400 text-left w-full mt-2">Sarah Chen, CEO & Founder, TechFlow Solutions</span>
                         </div>
                         <div className="mt-4">

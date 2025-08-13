@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.5s ease-in-out forwards;
+  animation-delay: 8s; /* matches your 9s timeout minus 1 second */
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
