@@ -149,7 +149,7 @@ const Contact = () => {
                                 </div>
                             )}
                             <BaseButton className={`w-full mt-4 py-3 justify-center ${submitting ? 'opacity-70 pointer-events-none items-center' : ''}`} func={handleSubmit}>
-                                <span className="mr-1">{submitting ? 'Sending...' : 'Send Message'}</span>
+                                <span className="mr-2">{submitting ? 'Sending...' : 'Send Message'}</span>
                                 <IoIosSend />
                             </BaseButton>
                         </form>
