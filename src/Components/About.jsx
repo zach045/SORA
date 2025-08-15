@@ -55,7 +55,7 @@ const About = () => {
                     <div className="text-left text-black">
                         <h3 className="text-2xl lg:text-3xl font-bold mb-8">Our Story</h3>
                         <p className="leading-relaxed my-4">
-                            <span className="font-semibold text-sky-600 text-lg">SORA Equity</span> is a strategic partner for visionary entrepreneurs seeking to scale their businesses with purpose and precision. Our name, derived from the Arabic word for “sky,” reflects our belief that the only true limit is the one you set for yourself. We exist to elevate small and medium enterprises by providing tailored guidance, operational support, and access to growth capital — empowering founders to realize their fullest potential.
+                            <span className="font-semibold text-sky-600 text-lg">SORA Equity</span> is a strategic partner for visionary entrepreneurs seeking to scale their businesses with purpose and precision. Our name, derived from the Japanese word for “sky,” reflects our belief that the only true limit is the one you set for yourself. We exist to elevate small and medium enterprises by providing tailored guidance, operational support, and access to growth capital — empowering founders to realize their fullest potential.
                         </p>
                         <p className="leading-relaxed my-4">
                             With deep roots in the MENA region and an eye on global opportunity, we blend local insight with world-class expertise. Whether it’s refining business strategy, securing funding, or scaling infrastructure, Sora Equity is committed to long-term partnerships that prioritize sustainable growth, innovation, and lasting impact.
