@@ -20,7 +20,7 @@ const Footer = () => {
     }
     return (
         <footer className="bg-sky-800 text-white">
-                <div className="p-8">
+                <div className="p-8 px-2 sm:px-8">
                     <div className="grid grid-cols md:grid-cols-2 lg:grid-cols-3 space-x-10">
                         <div className="text-left space-y-3 px-2">
                             <h3 className="text-2xl font-bold uppercase">SORA Equity</h3>
@@ -63,11 +63,11 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between items-center flex-wrap md:space-y-0 border-t border-gray-400 px-8 py-4">
+                <div className="flex justify-center flex-col-reverse md:flex-row md:justify-between items-center flex-wrap md:space-y-0 border-t border-gray-400 px-2 sm:px-8 py-4">
                     <span>2025 SORA Equity. All rights reserved.</span>
                     <button 
                     onClick={() => scrollToSection('#hero')}
-                    className="flex justify-center items-center p-2 ml-4 hover:bg-sky-950 transition duration-300 rounded-lg cursor-pointer">
+                    className="flex justify-center items-center p-2 ml-4 mb-4 md:mb-0 hover:bg-sky-950 transition duration-300 rounded-lg cursor-pointer">
                         Back to top
                         <IoMdArrowUp className="ml-2" />
                     </button>
